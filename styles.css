@@ -1,0 +1,191 @@
+:root{
+  --red: #d9232d;        /* Primary red */
+  --red-dark:#b41e26;    /* Darker red for hover */
+  --bg: #ffffff;         /* White background */
+  --text:#1b1f23;        /* Dark text */
+  --muted:#6a7684;       /* Muted grey */
+  --card:#f6f7f9;        /* Soft card bg */
+  --light:#fff5f6;       /* Very light red tint */
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; font-family:"Poppins", system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial; color:var(--text); background:var(--bg); }
+
+.container{ max-width:1100px; margin:0 auto; padding:0 16px; }
+
+.site-header{ position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid #eee; }
+.header-inner{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:16px; }
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
+.logo{ width:40px; height:40px; object-fit:contain; border-radius:8px; background:#fff; }
+.brand-text{ font-weight:700; }
+
+.nav{ display:flex; align-items:center; gap:18px; }
+.nav a{ color:var(--text); text-decoration:none; font-weight:600; }
+.nav a:hover{ color:var(--red); }
+
+.btn{ display:inline-block; border:none; text-decoration:none; cursor:pointer; font-weight:700; border-radius:12px; padding:12px 16px; }
+.btn-white{ background:#fff; color:var(--red); border:2px solid var(--red); }
+.btn-white:hover{ background:var(--light); }
+.btn-light{ background:#fff; color:var(--red); }
+.btn-ghost{ background:transparent; color:#fff; border:2px solid #fff; }
+.btn-red{ background:var(--red); color:#fff; }
+.btn-red:hover{ background:var(--red-dark); }
+
+.hero{ background:linear-gradient(135deg, var(--red) 0%, #ff4d5a 50%, #ff6b75 100%); color:#fff; }
+.hero-inner{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; padding:56px 0; align-items:center; }
+.hero-text h1{ font-size:clamp(28px,4vw,44px); line-height:1.1; margin:0 0 10px; }
+.hero-text .accent{ background:#fff; color:var(--red); padding:3px 10px; border-radius:12px; }
+.lead{ font-size:1.1rem; opacity:.95; }
+.cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin:16px 0 6px; }
+.hero-image img{ width:100%; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.25); }
+.mini{ font-size:.9rem; opacity:.95; }
+
+.section{ padding:56px 0; }
+.section-accent{ background:var(--red); }
+.section-accent-light{ background:var(--light); }
+.center{ text-align:center; }
+.white{ color:#fff; }
+
+.grid.two{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.card{ background:var(--card); padding:20px; border-radius:14px; box-shadow:0 6px 24px rgba(0,0,0,.05); }
+.list{ margin:10px 0 0; padding-left:18px; }
+.list li{ margin:8px 0; }
+.link{ color:var(--red); text-decoration:none; font-weight:600; }
+.link:hover{ text-decoration:underline; }
+
+.prize{ font-size:clamp(36px,6vw,64px); font-weight:800; color:#fff; margin:8px 0 0; }
+.prize span{ border-bottom:3px solid #fff; padding-bottom:6px; }
+
+.steps{ counter-reset: step; list-style:none; padding:0; }
+.steps li{ counter-increment: step; background:#fff; border-left:6px solid var(--red); padding:12px 12px 12px 14px; border-radius:10px; margin:12px 0; box-shadow:0 6px 16px rgba(0,0,0,.04); }
+.steps li::before{ content: counter(step) "."; font-weight:700; color:var(--red); margin-right:8px; }
+
+.caption{ width:100%; min-height:120px; border:1.5px dashed #e2e5ea; border-radius:12px; padding:12px; font-family:inherit; font-size:14px; background:#fff; color:var(--text); }
+.hint{ margin-top:12px; font-size:.95rem; color:var(--muted); }
+
+.section h2{ margin-top:0; }
+.muted{ color:var(--muted); }
+
+.site-footer{ border-top:1px solid #eee; background:#fff; }
+.footer-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; gap:16px; }
+.footer-links{ display:flex; gap:16px; }
+
+@media (max-width: 900px){
+  .hero-inner{ grid-template-columns:1fr; }
+  .grid.two{ grid-template-columns:1fr; }
+  .nav{ display:none; } /* Keep header clean on mobile; can add a burger later */
+}
+/* --- Mobile-first touch improvements --- */
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* Buttons: easier taps on mobile */
+.btn { min-height: 44px; line-height: 1.2; }
+.cta-row .btn { width: 100%; }           /* full width on small screens */
+.caption { min-height: 140px; }          /* comfortable typing area */
+
+/* Header: hamburger on mobile */
+.menu-btn {
+  display: none;
+  background: var(--red);
+  color: #fff;
+  border: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* Nav overlay for mobile */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+@media (max-width: 900px) {
+  .menu-btn { display: inline-block; }
+  .nav {
+    position: fixed;
+    inset: 64px 16px auto 16px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.15);
+    display: none;                /* hidden by default */
+    flex-direction: column;
+    gap: 12px;
+    z-index: 60;
+  }
+  .nav.open { display: flex; }    /* toggled via JS */
+  .nav a { width: 100%; text-align: center; padding: 10px 8px; }
+}
+
+/* Hero grid stacks nicely */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 40px 0; }
+  .cta-row { gap: 10px; }
+}
+
+/* Section grids stack */
+@media (max-width: 900px) {
+  .grid.two { grid-template-columns: 1fr; }
+}
+
+/* Footer stack */
+@media (max-width: 900px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* Typography clamps for small screens */
+.hero-text h1 { font-size: clamp(24px, 6vw, 44px); }
+.lead { font-size: clamp(16px, 3.9vw, 18px); }
+.prize { font-size: clamp(32px, 10vw, 64px); }
+
+
+/* All images scale automatically and never overflow */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px; /* optional soft edges */
+  object-fit: cover;   /* keeps ratio without stretching */
+}
+
+/* Optional: control hero image height on mobile */
+.hero-image img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .hero-image img {
+    max-height: 260px;
+  }
+}
+
+
+/* Reduce motion preference */
+.reduce-motion * { transition: none !important; animation: none !important; }
+
+
+
+/* Fix white background wrapping & overlap in headline */
+.hero-text h1 {
+  font-size: clamp(26px, 4.5vw, 44px);
+  line-height: 1.2; /* adds breathing space between lines */
+  font-weight: 700;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.hero-text .accent {
+  background: #fff;
+  color: var(--red);
+  padding: 4px 10px;
+  border-radius: 10px;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone; /* ensures rounded background continues on wrapped line */
+}
+
